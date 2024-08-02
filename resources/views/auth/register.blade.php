@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="POST" action="{{ route('register.post')}}" >
+    <form method="POST" action="{{ route('register.post')}}" >
         @csrf
         <input type="name" name="name" required>
         <input type="email" name="email" required>
