@@ -23,6 +23,10 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('register',[RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register'])->name('register.post');
 
+
+// USERS - resource gets index/create/store/show/edit/update/destroy
+Route::resource('users', UserController::class);
+
 // DELETE
-Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
