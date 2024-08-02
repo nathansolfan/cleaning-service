@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<x-layout title="User List"
 
     <h1>User List</h1>
 
@@ -24,9 +16,9 @@
                 <button type="submit">Delete</button>
             </form>
             <a href="{{ route('users.show', $user->id) }}">View</a>
-                <a href="{{ route('users.edit', $user->id) }}">Edit</a>
+            <a href="{{ route('users.edit', $user->id) }}">Edit</a>
         </li>
         @endforeach
     </ul>
-</body>
-</html>
+    <a href=" {{route('users.create')}} ">Create New User</a>
+
