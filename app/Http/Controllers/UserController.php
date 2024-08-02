@@ -45,15 +45,17 @@ class UserController extends Controller
         ]);
 
         // Redirect
-        return redirect()->route('users.index')->with('Success', 'Registered with OK');
+        return redirect()->route('users.index')->with('success', 'Registered with OK');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource. Details of User
      */
     public function show(string $id)
     {
-        //
+        // Eloquent method to find user by $id
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -61,7 +63,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
     /**

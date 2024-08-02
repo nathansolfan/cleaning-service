@@ -23,6 +23,8 @@
                 @method('DELETE')
                 <button type="submit">Delete</button>
             </form>
+            <a href="{{ route('users.show', $user->id) }}">View</a>
+                <a href="{{ route('users.edit', $user->id) }}">Edit</a>
         </li>
         @endforeach
     </ul>
