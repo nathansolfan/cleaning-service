@@ -5,18 +5,11 @@
 /* Custom CSS */
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #f9fafb; /* Light gray background */
+    background-color: #496683; /* Light gray background */
 }
 
-.custom-class {
+.test-class {
     background-color: #ff0000; /* Red background */
     color: #ffffff;           /* White text */
     border-radius: 5px;
-}
-
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
