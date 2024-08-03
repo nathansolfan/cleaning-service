@@ -5,11 +5,5 @@
 /* Custom CSS */
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #496683; /* Light gray background */
-}
-
-.test-class {
-    background-color: #ff0000; /* Red background */
-    color: #ffffff;           /* White text */
-    border-radius: 5px;
+    background-color: #f9fafb; /* Light gray background */
 }
