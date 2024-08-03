@@ -2,12 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Your custom CSS can go here */
+/* Custom CSS */
 body {
-  font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9fafb; /* Light gray background */
 }
 
 .custom-class {
-  background-color: #f00;
-  color: #fff;
+    background-color: #ff0000; /* Red background */
+    color: #ffffff;           /* White text */
+    border-radius: 5px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

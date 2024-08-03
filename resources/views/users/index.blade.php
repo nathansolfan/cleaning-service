@@ -1,4 +1,4 @@
-<x-layout title="User List"
+<x-layout title="User List">
 
     <h1>User List</h1>
 
@@ -20,5 +20,6 @@
         </li>
         @endforeach
     </ul>
-    <a href=" {{route('users.create')}} ">Create New User</a>
+    <a href=" {{route('users.create')}} ">Create new User</a>
+</x-layout>
 
