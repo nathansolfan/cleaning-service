@@ -22,6 +22,7 @@ class Booking extends Model
         'address',
         'city',
         'comments',
+        'user_id', // Add this line to make user_id fillable
     ];
 
 
