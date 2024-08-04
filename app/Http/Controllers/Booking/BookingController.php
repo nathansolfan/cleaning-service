@@ -23,7 +23,13 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('bookings.create');
+        // IF - CREATE if AUTH or QUOTE if NOT
+        if (auth()->check()) {
+            return view('bookings.create');
+        } else {
+            return view('bookings.quote');
+        }
+
     }
 
     /**
@@ -41,14 +47,26 @@ class BookingController extends Controller
             'comments' => 'nullable|string|max:255',
         ]);
 
-        Booking::create([
-            'service_type' => $request->service_type,
-            'date' => $request->date,
-            'time' => $request->time,
-            'address' => $request->address,
-            'city' => $request->city,
-            'comments' => $request->comments,
-        ]);
+
+
+        // put all data into $data and then if ['user_id']
+        $data = $request->all();
+        if (auth()->check()) {
+            $data['user_id'] = auth()->id();
+        } else {
+            $data['user_id'] = null;
+        }
+
+        Booking::create($data
+        //     [
+        //     'service_type' => $request->service_type,
+        //     'date' => $request->date,
+        //     'time' => $request->time,
+        //     'address' => $request->address,
+        //     'city' => $request->city,
+        //     'comments' => $request->comments,
+        // ]
+    );
 
         // redirect
         return redirect()->route('bookings.index')->with('success', 'Booking created with sucessoo');
