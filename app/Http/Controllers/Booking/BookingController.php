@@ -83,9 +83,9 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Booking $booking)
     {
-        //
+        return view('bookings.edit', compact('booking'));
     }
 
     /**

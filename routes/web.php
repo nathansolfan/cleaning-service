@@ -32,3 +32,8 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.dest
 // BOOKING
 Route::resource('bookings', BookingController::class);
 Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');
+
+// // BOOKING GET BOOKING TO EDIT
+// Route::get('bookings/{booking}/edit', BookingController::class)->name('booking.edit');
+// // UPDATE
+// Route::put('boookings/{booking}', [BookingController::class, 'myBookings'])->name('booking.my_bookings');
