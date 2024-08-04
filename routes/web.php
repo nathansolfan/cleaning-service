@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Booking\BookingController;
+
+use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home', [FrontendHomeController::class, 'index'])->name('home')->middleware('auth');
 
 // LOGIN
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
