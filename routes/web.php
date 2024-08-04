@@ -31,4 +31,4 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.dest
 
 // BOOKING
 Route::resource('bookings', BookingController::class);
-
+Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');

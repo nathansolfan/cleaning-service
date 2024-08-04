@@ -47,8 +47,6 @@ class BookingController extends Controller
             'comments' => 'nullable|string|max:255',
         ]);
 
-
-
         // put all data into $data and then if ['user_id']
         $data = $request->all();
         if (auth()->check()) {
@@ -104,5 +102,17 @@ class BookingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function myBookings()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Please log in to view your bookings');
+        }
+
+        // Booking::where('user_id', ...) querying bookings table where the user_id matches
+        // auth()->id() returns the id of the auth user, if no logged, return null
+        $bookings = Booking::where('user_id', auth()->id())->get();
+        return view('bookings.my_bookings', compact('bookings'));
     }
 }
