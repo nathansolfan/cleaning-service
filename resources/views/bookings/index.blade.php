@@ -36,5 +36,8 @@
         <div class="mt-6">
             <a href="{{ route('bookings.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create new Booking</a>
         </div>
+        <div class="mt-6">
+            <a href="{{ route('home') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Home</a>
+        </div>
     </div>
 </x-layout>

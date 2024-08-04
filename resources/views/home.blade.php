@@ -7,5 +7,8 @@
             @csrf
             <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-150">Logout</button>
         </form>
+        <div class="mt-6">
+            <a href="{{ route('bookings.create') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Create Booking</a>
+        </div>
     </div>
 </x-layout>
