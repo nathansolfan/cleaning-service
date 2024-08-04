@@ -33,16 +33,15 @@ class BookingController extends Controller
     {
         // validate the request to store
         $request->validate([
-            'service_type' => 'required|string',
+            'service_type' => 'required|string|max:255',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'comments' => 'required|string|max:255',
+            'comments' => 'nullable|string|max:255',
         ]);
 
         Booking::create([
-            'user_id' => auth()->id(),
             'service_type' => $request->service_type,
             'date' => $request->date,
             'time' => $request->time,
@@ -50,6 +49,9 @@ class BookingController extends Controller
             'city' => $request->city,
             'comments' => $request->comments,
         ]);
+
+        // redirect
+        return redirect()->route('bookings.index')->with('success', 'Booking created with sucessoo');
     }
 
 
