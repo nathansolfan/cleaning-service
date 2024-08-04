@@ -12,7 +12,7 @@
             @foreach ($bookings as $booking)
                 <li class="flex items-center justify-between bg-gray-100 p-4 rounded">
                     <div>
-                        <p class="text-gray-800"><strong>Customer ID:</strong> {{ $booking->customer_id }}</p>
+                        <p class="text-gray-800"><strong>Customer:</strong> {{ $booking->user ? $booking->user->name : 'Guest' }}</p>
                         <p class="text-gray-800"><strong>Service Type:</strong> {{ $booking->service_type }}</p>
                         <p class="text-gray-800"><strong>Date:</strong> {{ $booking->date }}</p>
                         <p class="text-gray-800"><strong>Time:</strong> {{ $booking->time }}</p>
@@ -35,9 +35,7 @@
 
         <div class="mt-6">
             <a href="{{ route('bookings.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create new Booking</a>
-        </div>
-        <div class="mt-6">
-            <a href="{{ route('home') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Home</a>
+            <a href="{{ route('home') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Home</a>
         </div>
     </div>
 </x-layout>
