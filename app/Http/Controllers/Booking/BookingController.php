@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Booking;
+
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
@@ -30,8 +31,28 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the request to store
+        $request->validate([
+            'service_type' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'comments' => 'required|string|max:255',
+        ]);
+
+        Booking::create([
+            'user_id' => auth()->id(),
+            'service_type' => $request->service_type,
+            'date' => $request->date,
+            'time' => $request->time,
+            'address' => $request->address,
+            'city' => $request->city,
+            'comments' => $request->comments,
+        ]);
     }
+
+
 
     /**
      * Display the specified resource.
