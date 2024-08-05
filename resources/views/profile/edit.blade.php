@@ -1,6 +1,11 @@
 <x-layout title="Edit Profile">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-auto mt-10 border border-gray-300">
         <h2 class="text-3xl font-bold mb-6 text-gray-800">Edit Profile</h2>
+        @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
         <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-4">
             @csrf
             @method('PUT')

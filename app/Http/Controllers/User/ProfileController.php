@@ -78,7 +78,6 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($user->profile_picture);
             }
             $user->profile_picture = $request->file('profile_picture')->store('profile_pictures', 'public');
-
         }
 
         $user->save();
