@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use App\Models\User; // Ensure this line is included
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -80,6 +83,7 @@ class ProfileController extends Controller
             $user->profile_picture = $request->file('profile_picture')->store('profile_picture', 'public');
         }
         $user->save();
+
 
         return redirect()->route('profile.edit')->with('success', 'Profile updated succesfullyy');
 

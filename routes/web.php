@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Booking\BookingController;
 
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,10 @@ Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('booki
 // Route::get('bookings/{booking}/edit', BookingController::class)->name('booking.edit');
 // // UPDATE
 // Route::put('boookings/{booking}', [BookingController::class, 'myBookings'])->name('booking.my_bookings');
+
+// PROFILE ROUTES
+
+Route::middleware(['auth'])->group(function (){
+    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile/update', [ProfileController::class, 'upate'])->name('profile.update');
+});
