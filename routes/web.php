@@ -42,12 +42,15 @@ Route::get('my_bookings', [BookingController::class, 'myBookings'])->name('booki
 
 // PROFILE ROUTES
 Route::middleware(['auth'])->group(function () {
-    // Display edit page
+    // display edit page
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Send update request
+
+    // send update request
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    // User's booking history
-    Route::get('bookings/history', [BookingController::class, 'history'])->name('history');
-    // Booking calendar
-    Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('calendar');
+
+    // user's booking history
+    Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
+
+    // booking calendar
+    Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('bookings.calendar');
 });
