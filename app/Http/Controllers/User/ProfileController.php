@@ -57,7 +57,11 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::user(); // Make sure $user is not null
+
+        if (!$user) {
+            return redirect()->route('login'); // Redirect to login if user is not authenticated
+        }
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -80,9 +84,14 @@ class ProfileController extends Controller
             $user->profile_picture = $request->file('profile_picture')->store('profile_pictures', 'public');
         }
 
-        $user->save();
+        try {
+            $user->save();
+            return redirect()->route('bookings.index')->with('success', 'Profile updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('profile.edit')->with('error', 'Failed to update profile: ' . $e->getMessage());
+        }
 
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully');
+        return redirect()->route('bookings.index')->with('success', 'Profile updated successfully');
     }
 
     /**
