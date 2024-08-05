@@ -11,8 +11,10 @@
         </form>
         <div class="mt-6">
             <a href="{{ route('bookings.create') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Create Booking</a>
-            <a href="{{ route('bookings.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Bookings</a>
+            <a href="{{ route('bookings.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Bookings Everyone</a>
             <a href="{{ route('bookings.my_bookings') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Booking History</a>
+            <a href="{{ route('profile.edit') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Profile Edit</a>
+
         </div>
     </div>
 </x-layout>

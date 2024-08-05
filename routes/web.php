@@ -24,6 +24,7 @@ Route::get('register',[RegisterController::class, 'showRegisterForm'])->name('re
 Route::post('register', [RegisterController::class, 'register'])->name('register.post');
 
 // USERS - resource gets index/create/store/show/edit/update/destroy
+// FOR ADMIN later
 Route::resource('users', UserController::class);
 
 // DELETE
