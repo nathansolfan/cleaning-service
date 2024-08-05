@@ -91,17 +91,31 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Booking $booking)
     {
-        //
+        $request->validate([
+            'service_type' => 'required|string|max:255',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'comments' => 'nullable|string|max:255',
+        ]);
+
+        $booking->update($request->all());
+
+        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
+     * Booking extendes from model
      */
-    public function destroy(string $id)
+    public function destroy(Booking $booking)
     {
-        //
+        $booking->delete();
+
+        return redirect()->route('bookings.index')->with('success', 'Booking deleted succesfully');
     }
 
     public function myBookings()
