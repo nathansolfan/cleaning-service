@@ -34,7 +34,7 @@
                 <label for="profile_picture" class="block text-gray-700 font-semibold mb-2">Profile Picture:</label>
                 <input type="file" id="profile_picture" name="profile_picture" class="w-full px-4 py-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @if ($user->profile_picture)
-                    <img src="{{ Storage::url($user->profile_picture) }}" alt="Profile Picture" class="mt-4 rounded">
+                    <img src="{{ Storage::url($user->profile_picture) }}" alt="Profile Picture" class="mt-4 rounded w-32 h-32 object-cover">
                 @endif
             </div>
             <div class="flex items-center justify-between">
