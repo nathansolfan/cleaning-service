@@ -33,6 +33,7 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.dest
 Route::resource('bookings', BookingController::class);
 Route::get('my_bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');
 
+Route::get('bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
 // // BOOKING GET BOOKING TO EDIT
 // Route::get('bookings/{booking}/edit', BookingController::class)->name('booking.edit');
 // // UPDATE
@@ -49,8 +50,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
     // user's booking history
-    Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
+    // Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
 
     // booking calendar
     Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('bookings.calendar');
 });
+Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');

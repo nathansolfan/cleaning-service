@@ -78,9 +78,9 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Booking $booking)
     {
-        //
+        return view('bookings.show', compact('booking'));
     }
 
     /**
@@ -140,7 +140,7 @@ class BookingController extends Controller
         // Step 1 - Get the authenticated user
         $user = Auth::user();
         // user_id column matches the ID of user
-        $bookings = Booking::where('user_id', $user->id)->orderBy('date', 'desc')->get();
+        $bookings = Booking::orderBy('date', 'desc')->get();
         Log::info($bookings); // Log the bookings
 
         return view('bookings.history', compact('bookings'));
