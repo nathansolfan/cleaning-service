@@ -135,17 +135,6 @@ class BookingController extends Controller
         return view('bookings.my_bookings', compact('bookings'));
     }
 
-    public function history()
-    {
-        // Step 1 - Get the authenticated user
-        $user = Auth::user();
-        // user_id column matches the ID of user
-        $bookings = Booking::orderBy('date', 'desc')->get();
-        Log::info($bookings); // Log the bookings
-
-        return view('bookings.history', compact('bookings'));
-    }
-
     public function calendar()
     {
         $user = Auth::user();

@@ -49,10 +49,7 @@ Route::middleware(['auth'])->group(function () {
     // send update request
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-    // user's booking history
-    // Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
-
     // booking calendar
     Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('bookings.calendar');
 });
-Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
+// Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
