@@ -4,7 +4,7 @@
         <div id="calendar"></div>
     </div>
 
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -21,5 +21,5 @@
             });
             calendar.render();
         });
-    </script>
+    </script> --}}
 </x-layout>

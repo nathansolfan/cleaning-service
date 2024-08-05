@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class BookingController extends Controller
 {
@@ -123,12 +125,13 @@ class BookingController extends Controller
     public function myBookings()
     {
         if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'Please log in to view your bookings');
+            return redirect()->route('bookings.index')->with('error', 'Please log in to view your bookings');
         }
 
         // Booking::where('user_id', ...) querying bookings table where the user_id matches
         // auth()->id() returns the id of the auth user, if no logged, return null
         $bookings = Booking::where('user_id', auth()->id())->get();
+        Log::info($bookings); // Add this line to log the bookings to the Laravel log
         return view('bookings.my_bookings', compact('bookings'));
     }
 
@@ -136,10 +139,8 @@ class BookingController extends Controller
     {
         // Step 1 - Get the authenticated user
         $user = Auth::user();
-
         // user_id column matches the ID of user
         $bookings = Booking::where('user_id', $user->id)->orderBy('date', 'desc')->get();
-
         return view('bookings.history', compact('bookings'));
     }
 

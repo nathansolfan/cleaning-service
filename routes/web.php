@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Booking\BookingController;
-
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -32,7 +31,7 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('user.dest
 
 // BOOKING
 Route::resource('bookings', BookingController::class);
-Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');
+Route::get('my_bookings', [BookingController::class, 'myBookings'])->name('bookings.my_bookings');
 
 // // BOOKING GET BOOKING TO EDIT
 // Route::get('bookings/{booking}/edit', BookingController::class)->name('booking.edit');
@@ -43,16 +42,12 @@ Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('booki
 
 // PROFILE ROUTES
 Route::middleware(['auth'])->group(function () {
-
-    // display edit page
+    // Display edit page
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
-    // sent update request
+    // Send update request
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-    // user`s booking history
+    // User's booking history
     Route::get('bookings/history', [BookingController::class, 'history'])->name('history');
-
-    // booking calendar
-    Route::get('booking/calendar'. [BookingController::class, 'calendar'])->name('calendar');
+    // Booking calendar
+    Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('calendar');
 });

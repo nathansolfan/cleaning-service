@@ -10,6 +10,9 @@
         <div class="mt-6">
             <a href="{{ route('bookings.create') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Create Booking</a>
             <a href="{{ route('bookings.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Bookings</a>
+            <a href="{{ route('bookings.my_bookings') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Booking History</a>
+            <a href="{{ route('bookings.history') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">View Booking History</a>
+
 
 
         </div>
