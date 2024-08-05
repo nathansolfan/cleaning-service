@@ -39,10 +39,20 @@ Route::get('my-bookings', [BookingController::class, 'myBookings'])->name('booki
 // // UPDATE
 // Route::put('boookings/{booking}', [BookingController::class, 'myBookings'])->name('booking.my_bookings');
 
-// PROFILE ROUTES
+
 
 // PROFILE ROUTES
 Route::middleware(['auth'])->group(function () {
+
+    // display edit page
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    // sent update request
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    // user`s booking history
+    Route::get('bookings/history', [BookingController::class, 'history'])->name('history');
+
+    // booking calendar
+    Route::get('booking/calendar'. [BookingController::class, 'calendar'])->name('calendar');
 });

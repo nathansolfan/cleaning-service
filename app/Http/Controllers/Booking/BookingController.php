@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Booking;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -118,6 +119,7 @@ class BookingController extends Controller
         return redirect()->route('bookings.index')->with('success', 'Booking deleted succesfully');
     }
 
+
     public function myBookings()
     {
         if (!auth()->check()) {
@@ -128,5 +130,24 @@ class BookingController extends Controller
         // auth()->id() returns the id of the auth user, if no logged, return null
         $bookings = Booking::where('user_id', auth()->id())->get();
         return view('bookings.my_bookings', compact('bookings'));
+    }
+
+    public function history()
+    {
+        // Step 1 - Get the authenticated user
+        $user = Auth::user();
+
+        // user_id column matches the ID of user
+        $bookings = Booking::where('user_id', $user->id)->orderBy('date', 'desc')->get();
+
+        return view('bookings.history', compact('bookings'));
+    }
+
+    public function calendar()
+    {
+        $user = Auth::user();
+
+        $bookings = Booking::where('user_id', $user->id)->get();
+        return view('bookings.calendar', compact('bookings'));
     }
 }
