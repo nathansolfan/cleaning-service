@@ -1,3 +1,4 @@
+<!-- resources/views/components/layout.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +9,10 @@
     @vite('resources/css/app.css')
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
-<body>
+<body class="bg-gray-100">
     <x-navbar />
     <x-hero />
-
-    <!-- Adjusted main content container with top margin -->
-    <div class="container mx-auto p-4 mt-20">
+    <div class="container mx-auto p-4 mt-8">
         {{ $slot }}
     </div>
     <x-footer />
