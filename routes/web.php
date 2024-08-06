@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Booking\BookingController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -11,25 +12,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
-// Can also be writen like this
-// Route::view('/services', 'services.index')->name('services');
-Route::get('pages/services', function () {
-    return view('pages.services');
-})->name('services');
-
-Route::get('pages/about', function () {
-    return view('pages.about');
-})->name('about');
-
-Route::get('pages/contact', function () {
-    return view('pages.contact');
-})->name('contact');
-
-
-
-
-
 
 Route::get('/home', [FrontendHomeController::class, 'index'])->name('home')->middleware('auth');
 
@@ -72,3 +54,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('bookings/calendar', [BookingController::class, 'calendar'])->name('bookings.calendar');
 });
 // Route::get('bookings/history', [BookingController::class, 'history'])->name('bookings.history');
+
+
+// PAGES
+
+// Can also be writen like this
+// Route::view('/services', 'services.index')->name('services');
+Route::get('services', function () {
+    return view('pages.services');
+})->name('services');
+
+Route::get('about', function () {
+    return view('pages.about');
+})->name('about');
+
+Route::get('contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
