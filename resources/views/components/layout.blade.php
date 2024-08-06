@@ -9,11 +9,10 @@
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 <body>
-    <header></header>
-    <main>
-
-
-        {{ $slot }}</main>
-    <footer></footer>
+    <x-navbar />
+    <div class="container mx-auto p-4">
+        {{ $slot }}
+    </div>
+    <x-footer />
 </body>
 </html>
