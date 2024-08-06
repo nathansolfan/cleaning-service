@@ -12,7 +12,8 @@
     <x-navbar />
     <x-hero />
 
-    <div class="container mx-auto p-4">
+    <!-- Adjusted main content container with top margin -->
+    <div class="container mx-auto p-4 mt-20">
         {{ $slot }}
     </div>
     <x-footer />
