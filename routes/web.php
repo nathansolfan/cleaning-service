@@ -12,6 +12,25 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+// Can also be writen like this
+// Route::view('/services', 'services.index')->name('services');
+Route::get('pages/services', function () {
+    return view('pages.services');
+})->name('services');
+
+Route::get('pages/about', function () {
+    return view('pages.about');
+})->name('about');
+
+Route::get('pages/contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+
+
+
+
+
 Route::get('/home', [FrontendHomeController::class, 'index'])->name('home')->middleware('auth');
 
 // LOGIN
@@ -39,7 +58,6 @@ Route::get('bookings/{booking}', [BookingController::class, 'show'])->name('book
 // Route::get('bookings/{booking}/edit', BookingController::class)->name('booking.edit');
 // // UPDATE
 // Route::put('boookings/{booking}', [BookingController::class, 'myBookings'])->name('booking.my_bookings');
-
 
 
 // PROFILE ROUTES
