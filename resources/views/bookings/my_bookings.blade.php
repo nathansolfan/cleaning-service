@@ -16,6 +16,18 @@
                             <p class="text-gray-800"><strong>City:</strong> {{ $booking->city }}</p>
                             <p class="text-gray-800"><strong>Comments:</strong> {{ $booking->comments }}</p>
                         </div>
+
+                        <div class="flex space-x-2">
+                            <!-- Edit Button -->
+                            <a href=" {{ route('bookings.edit', $booking->id)}}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"  >Edit</a>
+
+                            <!-- Delete Button -->
+                            <form action=" {{ route('bookings.destroy', $booking->id)}}" method="POST" onsubmit="return confirm('Are you sure?');" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white fond-bold py-2 px-4 rounded">Delete</button>
+                            </form>
+                        </div>
                     </li>
                 @endforeach
             </ul>
