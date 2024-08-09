@@ -9,12 +9,13 @@
     @vite('resources/css/app.css')
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen">
     <x-navbar />
     <x-hero />
-    <div class="container mx-auto p-4 mt-8">
+    <x-cards />
+    <main class="flex-grow">
         {{ $slot }}
-    </div>
+    </main>
     <x-footer />
 </body>
 </html>

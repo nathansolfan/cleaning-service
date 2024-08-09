@@ -1,5 +1,5 @@
 <!-- resources/views/components/hero.blade.php -->
-<section class="relative bg-cover bg-center h-screen text-white" style="background-image: url('{{ asset('images/bg.jpg') }}');">
+<section class="relative bg-cover bg-center text-white" style="background-image: url('{{ asset('images/bg.jpg') }}'); height: 40vh;">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="container mx-auto h-full flex flex-col justify-center items-center text-center relative z-10">
         <h1 class="text-5xl font-bold mb-4">Our Cleaning Service</h1>
