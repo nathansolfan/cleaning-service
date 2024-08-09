@@ -13,6 +13,7 @@
     <x-navbar />
     <x-hero />
     <x-cards />
+    <x-testimonials />
     <main class="flex-grow">
         {{ $slot }}
     </main>
