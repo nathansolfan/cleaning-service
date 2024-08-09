@@ -1,4 +1,4 @@
-<x-layout title="Create Booking">
+<x-form-layout title="Create Booking">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-auto mt-10 border border-gray-300">
         <h2 class="text-3xl font-bold mb-6 text-gray-800">Create Booking</h2>
         <form method="POST" action="{{ route('bookings.store') }}" class="space-y-4">
@@ -32,4 +32,4 @@
             </div>
         </form>
     </div>
-</x-layout>
+</x-form-layout>
