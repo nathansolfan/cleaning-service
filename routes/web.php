@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\PostcodeController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -73,3 +74,13 @@ Route::get('contact', function () {
 })->name('contact');
 
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
+
+
+
+// POST CODE ROUTE
+
+Route::get('postcode-lookup', function () {
+    return view('postcode.postcode_form');
+})->name('postcode.form');
+
+Route::post('postcode-lookup', [PostcodeController::class, 'lookup'])->name('postcode.lookup');

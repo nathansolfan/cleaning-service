@@ -29,6 +29,8 @@
             </div>
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150">Create Booking</button>
+
+                <a href=" {{ route('home')}} " class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-150">Cancel</a>
             </div>
         </form>
     </div>
