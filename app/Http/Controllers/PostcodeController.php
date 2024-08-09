@@ -17,17 +17,23 @@ class PostcodeController extends Controller
         $postcode = $request->input('postcode');
 
         // make the API request to Postcodes.io
-        $response = Http::withOptions(['verify' => false])->get('https://api.postcodes.io/postcodes/'. urlencode($postcode));
+        $response = Http::withOptions(['verify' => false])->get('https://api.postcodes.io/postcodes/' . urlencode($postcode));
 
         if ($response->successful()) {
             // extract info from response
-            $data = $request->json();
-            $address = $data['result']['admin_ward'] . ', ' . $data['result']['admin_district'] . ', ' . $data['result']['country'];
+            $data = $response->json();
 
-            return redirect()->back()->with('address', $address);
+             // Ensure that the 'result' key exists in the response data
+             if (isset($data['result'])) {
+                $address = $data['result']['admin_ward'] . ', ' . $data['result']['admin_district'] . ', ' . $data['result']['country'];
+                // Pass the address data to the view
+                return redirect()->back()->with('address', $address);
+            } else {
+                return redirect()->back()->with('error', 'No data found for the provided postcode.');
+            }
         } else {
-            // Handle errors
-            return redirect()->back()->with('error', 'Invalid Post code or no data');
+            // Handle errors (e.g., invalid postcode)
+            return redirect()->back()->with('error', 'Invalid postcode or no data found.');
         }
     }
 }
