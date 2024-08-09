@@ -96,6 +96,9 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
+
+        Log::info('Updating booking: ', ['booking_id' => $booking->id]);
+
         $request->validate([
             'service_type' => 'required|string|max:255',
             'date' => 'required|date',

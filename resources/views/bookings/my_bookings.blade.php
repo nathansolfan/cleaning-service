@@ -16,16 +16,15 @@
                             <p class="text-gray-800"><strong>City:</strong> {{ $booking->city }}</p>
                             <p class="text-gray-800"><strong>Comments:</strong> {{ $booking->comments }}</p>
                         </div>
-
                         <div class="flex space-x-2">
                             <!-- Edit Button -->
-                            <a href=" {{ route('bookings.edit', $booking->id)}}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"  >Edit</a>
+                            <a href="{{ route('bookings.edit', $booking->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Edit</a>
 
                             <!-- Delete Button -->
-                            <form action=" {{ route('bookings.destroy', $booking->id)}}" method="POST" onsubmit="return confirm('Are you sure?');" >
+                            <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white fond-bold py-2 px-4 rounded">Delete</button>
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
                             </form>
                         </div>
                     </li>
@@ -34,7 +33,7 @@
         @endif
 
         <div class="mt-6">
-            <a href="{{ route('bookings.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create new Booking</a>
+            <a href="{{ route('bookings.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create New Booking</a>
             <a href="{{ route('home') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Home</a>
         </div>
     </div>
