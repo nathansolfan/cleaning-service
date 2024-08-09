@@ -11,6 +11,10 @@
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
     <x-navbar />
+     <!-- Display global alerts -->
+     <div class="container mx-auto mt-4">
+        <x-alert />
+    </div>
     <x-hero />
     <x-cards />
     <x-testimonials />
