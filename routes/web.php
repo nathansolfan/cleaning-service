@@ -77,10 +77,3 @@ Route::post('contact/submit', [ContactController::class, 'submit'])->name('conta
 
 
 
-// POST CODE ROUTE
-
-Route::get('postcode-lookup', function () {
-    return view('postcode.postcode_form');
-})->name('postcode.form');
-
-Route::post('postcode-lookup', [PostcodeController::class, 'lookup'])->name('postcode.lookup');
