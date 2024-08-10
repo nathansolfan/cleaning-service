@@ -25,7 +25,8 @@ class PostcodeController extends Controller
 
              // Ensure that the 'result' key exists in the response data
              if (isset($data['result'])) {
-                $address = $data['result']['admin_ward'] . ', ' . $data['result']['admin_district'] . ', ' . $data['result']['country'];
+                $result = $data['result'];
+                $address = $result['admin_ward'] . ', ' . $result['admin_district'] . ', ' . $result['parliamentary_constituency'] . ', ' . $result['region'] . ', ' . $result['country'];
                 // Pass the address data to the view
                 return redirect()->back()->with('address', $address);
             } else {
