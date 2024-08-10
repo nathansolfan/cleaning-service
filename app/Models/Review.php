@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'booking_id',
+        'rating',
+        'review',
+        'approved'
+    ];
+
+    // Get the user that owns the review
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
