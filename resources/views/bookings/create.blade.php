@@ -17,7 +17,7 @@
             </div>
             <div>
                 <label for="address" class="block text-gray-700 font-semibold mb-2">Address:</label>
-                <input type="text" id="address" name="address" required class="w-full px-4 py-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="autocomplete" name="address" required class="w-full px-4 py-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
                 <label for="city" class="block text-gray-700 font-semibold mb-2">City:</label>
