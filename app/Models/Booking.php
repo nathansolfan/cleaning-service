@@ -33,6 +33,6 @@ class Booking extends Model
 
     public function reviews()
     {
-        return $this->belongsTo(Review::class);
+        return $this->hasMany(Review::class);
     }
 }

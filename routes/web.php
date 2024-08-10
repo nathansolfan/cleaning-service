@@ -6,6 +6,7 @@ use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\PostcodeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -76,4 +77,7 @@ Route::get('contact', function () {
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
-
+Route::middleware('auth')->group( function () {
+    Route::get('bookings/{booking}/review', [ReviewController::class, 'create' ])->name('reviews.create');
+    Route::put('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+});
