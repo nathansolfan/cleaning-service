@@ -79,5 +79,5 @@ Route::post('contact/submit', [ContactController::class, 'submit'])->name('conta
 
 Route::middleware('auth')->group( function () {
     Route::get('bookings/{booking}/review', [ReviewController::class, 'create' ])->name('reviews.create');
-    Route::put('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
