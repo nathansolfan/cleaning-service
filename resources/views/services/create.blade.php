@@ -17,13 +17,17 @@
         <form action="{{ route('services.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Service Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <label for="name">Service Type:</label>
+                <select id="name" name="name" class="form-control" required onchange="updatePrice()">
+                    <option value="Classic Regular Cleaning" data-price="16.90">Classic Regular Cleaning</option>
+                    <option value="Classic One-Off Cleaning" data-price="18.90">Classic One-Off Cleaning</option>
+                    <option value="Deep Cleaning" data-price="24.90">Deep Cleaning</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="price">Price (£):</label>
-                <input type="text" id="price" name="price" class="form-control" required>
+                <input type="text" id="price" name="price" class="form-control" required readonly>
             </div>
 
             <div class="form-group">
@@ -34,4 +38,18 @@
             <button type="submit" class="btn btn-primary">Add Service</button>
         </form>
     </div>
+
+    <script>
+        // Automatically update the price based on the selected service
+        function updatePrice() {
+            var select = document.getElementById('name');
+            var price = select.options[select.selectedIndex].getAttribute('data-price');
+            document.getElementById('price').value = price;
+        }
+
+        // Set the initial price when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePrice();
+        });
+    </script>
 </x-layout>
