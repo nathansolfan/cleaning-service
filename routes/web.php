@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\PostcodeController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +60,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 // PAGES
-
 // Can also be writen like this
 // Route::view('/services', 'services.index')->name('services');
 Route::get('services', function () {
@@ -77,7 +77,14 @@ Route::get('contact', function () {
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
+
+// REVIEW
 Route::middleware('auth')->group( function () {
     Route::get('bookings/{booking}/review', [ReviewController::class, 'create' ])->name('reviews.create');
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
+
+
+// SERVICES
+
+Route::resource('services', ServiceController::class);
