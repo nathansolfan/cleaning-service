@@ -4,7 +4,7 @@
     <div class="container mx-auto h-full flex flex-col justify-center items-center text-center relative z-10">
         <h1 class="text-5xl font-bold mb-4 shadow-lg">Our Cleaning Service</h1>
         <p class="text-xl mb-8 shadow-lg">Providing top-notch cleaning services for your home and office.</p>
-        <a href="{{ route('services') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition transform hover:scale-105">Our Services</a>
+        <a href="{{ route('services.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition transform hover:scale-105">Our Services</a>
     </div>
 </section>
 
