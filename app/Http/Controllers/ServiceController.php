@@ -13,7 +13,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::all();
-        return view('services.index', compact('services'));
+        return view('services.index', compact('service'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        return view('services.show', compact('services'));
+        return view('services.show', compact('service'));
     }
 
     /**
@@ -54,7 +54,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('services.edit', compact('services'));
+        return view('services.edit', compact('service'));
     }
 
     /**
@@ -79,6 +79,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return redirect()->route('services.index')->with('success', 'Service deleted okaish');
     }
 }
