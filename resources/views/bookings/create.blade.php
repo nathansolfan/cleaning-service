@@ -16,10 +16,10 @@
                             <option value="Deep Cleaning" data-price="24.90">Deep Cleaning</option>
                         </select>
                     </div>
-                    <div>
+                    {{-- <div>
                         <label for="postcode" class="block text-gray-700 font-semibold mb-2">Postcode:</label>
                         <input type="text" id="postcode" name="postcode" required class="w-full px-4 py-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" onblur="updateBasket()">
-                    </div>
+                    </div> --}}
                     <div>
                         <label for="date" class="block text-gray-700 font-semibold mb-2">Date:</label>
                         <input type="date" id="date" name="date" required class="w-full px-4 py-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -61,57 +61,68 @@
 
     <!-- Include the Google Places API Script -->
     <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places"></script>
+<script>
+    function initAutocomplete() {
+        const input = document.getElementById('autocomplete');
+        const postcodeInput = document.getElementById('postcode');
+        const autocomplete = new google.maps.places.Autocomplete(input);
 
-    <!-- Add the initAutocomplete function -->
-    <script>
-        function initAutocomplete() {
-            const input = document.getElementById('autocomplete');
-            const autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.setFields(['address_component', 'formatted_address']);
 
-            autocomplete.setFields(['address_component', 'formatted_address']);
+        autocomplete.addListener('place_changed', function () {
+            const place = autocomplete.getPlace();
+            let addressComponents = {
+                postcode: '',
+                street_number: '',
+                route: '',
+                locality: '',
+                country: ''
+            };
 
-            autocomplete.addListener('place_changed', function () {
-                const place = autocomplete.getPlace();
-
-                let addressComponents = {};
-                place.address_components.forEach(component => {
-                    const types = component.types;
-                    if (types.includes('street_number')) {
-                        addressComponents.street_number = component.long_name;
-                    }
-                    if (types.includes('route')) {
-                        addressComponents.route = component.long_name;
-                    }
-                    if (types.includes('locality')) {
-                        addressComponents.locality = component.long_name;
-                    }
-                    if (types.includes('postal_code')) {
-                        addressComponents.postal_code = component.long_name;
-                    }
-                    if (types.includes('country')) {
-                        addressComponents.country = component.long_name;
-                    }
-                });
-
-                console.log('Address Components:', addressComponents);
+            place.address_components.forEach(component => {
+                const types = component.types;
+                if (types.includes('postal_code')) {
+                    addressComponents.postcode = component.long_name;
+                }
+                if (types.includes('street_number')) {
+                    addressComponents.street_number = component.long_name;
+                }
+                if (types.includes('route')) {
+                    addressComponents.route = component.long_name;
+                }
+                if (types.includes('locality')) {
+                    addressComponents.locality = component.long_name;
+                }
+                if (types.includes('country')) {
+                    addressComponents.country = component.long_name;
+                }
             });
-        }
 
-        function updateBasket() {
-            const serviceSelect = document.getElementById('service_type');
-            const selectedService = serviceSelect.options[serviceSelect.selectedIndex].text;
-            const price = serviceSelect.options[serviceSelect.selectedIndex].getAttribute('data-price');
-            const postcode = document.getElementById('postcode').value;
+            // Auto-fill the postcode input with the selected postcode
+            postcodeInput.value = addressComponents.postcode;
+            updateBasket(); // Update basket summary with new postcode
 
-            document.getElementById('basket-service').innerText = selectedService;
-            document.getElementById('basket-price').innerText = price;
-            document.getElementById('basket-postcode').innerText = postcode ? postcode : 'Not provided';
-        }
+            console.log('Address Components:', addressComponents);
+        });
+    }
 
-        // Ensure the Google Maps API is fully loaded before running initAutocomplete
-        window.onload = function() {
-            initAutocomplete();
-            updateBasket(); // Initial call to set basket values
-        };
-    </script>
+    function updateBasket() {
+        const serviceSelect = document.getElementById('service_type');
+        const selectedService = serviceSelect.options[serviceSelect.selectedIndex].text;
+        const price = serviceSelect.options[serviceSelect.selectedIndex].getAttribute('data-price');
+        const postcode = document.getElementById('postcode').value;
+
+        document.getElementById('basket-service').innerText = selectedService;
+        document.getElementById('basket-price').innerText = price;
+        document.getElementById('basket-postcode').innerText = postcode ? postcode : 'Not provided';
+    }
+
+    // Ensure the Google Maps API is fully loaded before running initAutocomplete
+    window.onload = function() {
+        initAutocomplete();
+        updateBasket(); // Initial call to set basket values
+    };
+</script>
+
+
 </x-form-layout>
