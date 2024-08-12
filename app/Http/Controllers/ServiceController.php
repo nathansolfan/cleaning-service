@@ -33,7 +33,6 @@ class ServiceController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|string',
         ]);
 
         Service::create($request->all());
@@ -66,7 +65,6 @@ class ServiceController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|string',
         ]);
 
         $service->update($request->all());
