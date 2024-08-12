@@ -12,7 +12,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('services.index', compact('services'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'image_path' => 'nullable|string',
+        ]);
+
+        Service::create($request->all());
+
+
+
     }
 
     /**
