@@ -74,7 +74,6 @@ class BookingController extends Controller
     }
 
 
-
     /**
      * Display the specified resource.
      */
