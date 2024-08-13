@@ -1,4 +1,4 @@
-<x-layout>
+<x-form-layout title="Create Booking">
     <div class="container mx-auto py-12">
         <h1 class="text-5xl font-bold text-center mb-12 text-gray-800">Our Premium Cleaning Services</h1>
 
@@ -12,6 +12,7 @@
                     </div>
                     <p class="text-gray-600 mb-4">{{ $service->description }}</p>
                     <p class="text-xl font-bold text-green-600 mb-6">£{{ number_format($service->price, 2) }} per hour</p>
+                    <a href="{{ route('services.show', $service->id) }}" class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mb-2">Learn More</a>
                     <a href="{{ route('bookings.create', ['service' => $service->id]) }}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">Book Now</a>
                 </div>
             @endforeach
@@ -30,6 +31,7 @@
                     <li>Consistent cleaning with the same cleaner</li>
                 </ul>
                 <p class="text-xl font-bold text-green-600 mb-6">£16.90 per hour</p>
+                <a href="{{ route('services.show', ['service' => 'Classic Regular Cleaning']) }}" class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mb-2">Learn More</a>
                 <a href="{{ route('bookings.create', ['service' => 'Classic Regular Cleaning']) }}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Book Now</a>
             </div>
 
@@ -43,6 +45,7 @@
                     <li>Kitchen and bathroom deep cleaning</li>
                 </ul>
                 <p class="text-xl font-bold text-green-600 mb-6">£18.90 per hour</p>
+                <a href="{{ route('services.show', ['service' => 'Classic One-Off Cleaning']) }}" class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mb-2">Learn More</a>
                 <a href="{{ route('bookings.create', ['service' => 'Classic One-Off Cleaning']) }}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Book Now</a>
             </div>
 
@@ -56,6 +59,7 @@
                     <li>Carpet and upholstery steam cleaning</li>
                 </ul>
                 <p class="text-xl font-bold text-green-600 mb-6">£24.90 per hour</p>
+                <a href="{{ route('services.show', ['service' => 'Deep Cleaning']) }}" class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mb-2">Learn More</a>
                 <a href="{{ route('bookings.create', ['service' => 'Deep Cleaning']) }}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Book Now</a>
             </div>
 
@@ -69,8 +73,14 @@
                     <li>Guaranteed to meet landlord or agent requirements</li>
                 </ul>
                 <p class="text-xl font-bold text-green-600 mb-6">£24.90 per hour</p>
+                <a href="{{ route('services.show', ['service' => 'End of Tenancy Cleaning']) }}" class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mb-2">Learn More</a>
                 <a href="{{ route('bookings.create', ['service' => 'End of Tenancy Cleaning']) }}" class="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Book Now</a>
             </div>
         </div>
+
+        <!-- Back to Home Link -->
+        <div class="text-center mt-12">
+            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800 font-bold">Back to Home</a>
+        </div>
     </div>
-</x-layout>
+</x-form-layout>
